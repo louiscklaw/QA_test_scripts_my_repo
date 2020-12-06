@@ -53,7 +53,7 @@ def assertCheckPointJotMetadata(json_metadata, driver ,check_point_name, error_m
     print(DEBUG_MSG)
 
     # assert False, 'hello fail'
-    assert verdict, img_filename+' : ' +error_msg
+    assert verdict, img_filename+' : ' +error_msg+', '+str(img_diff_result)+', '+str(image_test_threshold)
 
   # if make_asserts:
   #   assertSameImage(expected_screenshot_path, actual_screenshot_path,fail_threshold,  error_message, json_metadata)
