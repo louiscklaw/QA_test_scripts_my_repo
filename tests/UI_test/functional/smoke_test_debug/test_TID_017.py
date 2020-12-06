@@ -10,13 +10,13 @@ from steps import *
 from pages.config import *
 from jp import *
 
-from test_TID_006 import *
+from test_TID_016 import *
 
-def tour_TID_009(json_metadata):
+def tour_TID_017(json_metadata):
 
-  browser = tour_TID_006(json_metadata)
+  browser = tour_TID_016(json_metadata)
 
   # the update of line up info appears here
-  check_TID_009.run_check(json_metadata, browser)
+  check_TID_017.run_check(json_metadata, browser)
 
   return browser
