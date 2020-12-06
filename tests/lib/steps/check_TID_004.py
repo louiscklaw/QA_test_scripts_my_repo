@@ -12,9 +12,6 @@ from assert_check_point_jot_metadata import assertCheckPointJotMetadata
 
 
 def run_check(json_metadata, browser):
-  ERR_MSG_ERR_FOUND_BEFORE_RUNNING_004='error found before running TID_004'
-  ERR_MSG_TNC_DIALOGUE_SHOULD_CLOSE='tapping close button , T&C dialog message should close'
-
   # init test json_metadata
   json_metadata['TID_004']={}
   json_metadata['TID_004'][TESTFIELD_STATUS] = TEST_TESTING

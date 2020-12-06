@@ -59,3 +59,11 @@ jobs:
           path: reports/functional
           retention-days: 1
         if: always()
+
+      - name: action-upload-artifact-tryout
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'report_json'
+          path: .report.json
+          retention-days: 10
+        if: always()
