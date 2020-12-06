@@ -28,3 +28,22 @@ ERR_MSG_TNC_DIALOGUE_SHOULD_CLOSE='tapping close button , T&C dialog message sho
 
 # 005
 TNC_DIALOG_MESSAGE_SHOULD_CLOSE='T&C dialog message should close'
+
+# 006
+TEST_ERR_MSG='User should automatically direct to food menu page with a number display dialog'
+
+# 006_1
+TEST_ERR_MSG='User should automatically direct to food menu page with a number display dialog'
+
+# 012
+TEST_ERR_MSG='It should increase the quantity of the food item'
+
+# 013
+TEST_ERR_MSG='It should increase the quantity of the food item'
+
+# 019
+TEST_ERR_MSG='It should send order successfully'
+
+
+# 021
+TEST_ERR_MSG='error during running test 021'

@@ -19,18 +19,18 @@ def run_check(json_metadata, browser):
 
   line_up_page_po = line_up_page.FirstTimeLanding(browser)
 
-  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_1', ERR_MSG_BEFORE_TAPPING_TNC_MSG, 0.05)
+  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_1', ERR_MSG_BEFORE_TAPPING_TNC_MSG, 0.5)
   # TODO: assertCheckPoint(browser, 'TID_002_1', ERR_MSG_BEFORE_TAPPING_TNC_MSG)
 
   line_up_page_po.tapTAndCText()
 
   sleep(1)
   # TODO: assertCheckPoint(browser, 'TID_002_2', ERR_MSG_BACK_FROM_TNC_MSG)
-  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_2', ERR_MSG_BACK_FROM_TNC_MSG, 0.05)
+  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_2', ERR_MSG_BACK_FROM_TNC_MSG, 0.5)
 
   # back after test
   line_up_page_po.backFromTAndCText()
   # TODO: assertCheckPoint(browser, 'TID_002_3', ERR_MSG_BACK_FROM_TNC_MSG)
-  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_3', ERR_MSG_BACK_FROM_TNC_MSG, 0.05)
+  assertCheckPointJotMetadata(json_metadata['TID_002'], browser, 'TID_002_3', ERR_MSG_BACK_FROM_TNC_MSG, 0.5)
 
-  json_metadata['TID_002'] = 'passed'
+  json_metadata['TID_002'][TESTFIELD_STATUS] = TEST_PASS

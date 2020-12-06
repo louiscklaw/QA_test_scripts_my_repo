@@ -30,4 +30,4 @@ def run_check(json_metadata, r_browser, c_browser):
 
   assertCheckPoint(r_browser, 'TID_035_3', TEST_ERR_MSG)
 
-  json_metadata['TID_035'] = 'passed'
+  json_metadata['TID_035'][TESTFIELD_STATUS] = TEST_PASS

@@ -24,4 +24,4 @@ def run_check(json_metadata, r_browser, time_to_tap=4):
     order_page_po.tapTopMostOrderOneDelivered()
     assertCheckPoint(r_browser, 'TID_043_2_{}'.format(i), TEST_ERR_MSG)
 
-  json_metadata['TID_043'] = 'passed'
+  json_metadata['TID_043'][TESTFIELD_STATUS] = TEST_PASS

@@ -10,7 +10,7 @@ set -ex
 # trap shutdown SIGTERM SIGINT EXIT
 
 # # export REPO_HOME=..
-# # PATH=$PATH:$REPO_HOME/drivers/chrome/85
+export PATH=$PATH:/home/logic/_workspace/LynkedKK/QA_test_scripts_my_repo/drivers/chrome/85
 
 # rm -rf reports/* || true
 # mkdir -p reports/functional/test_viewport
@@ -29,9 +29,14 @@ set -ex
 # pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test
 
 rm -rf /home/logic/_del/LYNKED_QA_project-local-chrome/tests/UI_test/functional/smoke_test_remote_parallel/actual/*.png
+rm -rf /home/logic/_workspace/LynkedKK/QA_test_scripts_my_repo/tests/UI_test/functional/smoke_test_remote_parallel/actual/*.png
 
-pipenv sync
+# pipenv sync
 
 # pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test_remote_parallel/test_TID_004.py
 
-pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test_remote_parallel/test_TID_005.py
+pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test_debug/test_TID_015.py
+
+
+# pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test_debug/test_TID_019.py
+# pipenv run pytest --maxfail=999 --json-report  --html=reports/functional/report.html -x tests/UI_test/functional/smoke_test_debug/test_TID_021.py

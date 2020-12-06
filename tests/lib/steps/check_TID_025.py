@@ -40,4 +40,4 @@ def run_check(json_metadata, browser, number_of_people_to_split):
 
   assertCheckPoint(browser, 'TID_025_2', TEST_ERR_MSG)
 
-  json_metadata['TID_025'] = 'passed'
+  json_metadata['TID_025'][TESTFIELD_STATUS] = TEST_PASS

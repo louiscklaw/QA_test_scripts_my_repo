@@ -18,4 +18,4 @@ def run_check(json_metadata, r_browser):
   order_page_po.tapTopMostDeleteButton()
   assertCheckPoint(r_browser, 'TID_046_2', TEST_ERR_MSG)
 
-  json_metadata['TID_046'] = 'passed'
+  json_metadata['TID_046'][TESTFIELD_STATUS] = TEST_PASS
