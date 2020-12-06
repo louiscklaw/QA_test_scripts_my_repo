@@ -20,11 +20,7 @@ def getActualScreenshotPath(test_number):
 def getExpectedScreenshotPath(test_number):
   return 'tests/UI_test/functional/smoke_test_remote_parallel/expected/{}_sc.png'.format(test_number)
 
-
-def assertCheckPoint(driver ,check_point_name, error_message, fail_threshold=0.054, sleep_s=0.5, make_asserts=True, json_metadata={}):
-  # assume scoped by the caller, e.g. jsom_metadata['TID_004]['TID_004_1]
-  json_metadata={}
-
+def assertCheckPointJotMetadata(json_metadata, driver ,check_point_name, error_message, fail_threshold=0.054, sleep_s=0.5, make_asserts=True ):
   sleep(sleep_s)
   actual_screenshot_path=getActualScreenshotPath(check_point_name)
   expected_screenshot_path=getExpectedScreenshotPath(check_point_name)
@@ -38,27 +34,26 @@ def assertCheckPoint(driver ,check_point_name, error_message, fail_threshold=0.0
     error_msg=error_message
 
     # jot input
-    json_metadata[check_point_name]='helloworld'
-    # local_metadata=json_metadata[check_point_name]
-    # local_metadata['img_expected']=img_expected
-    # local_metadata['img_actual']=img_actual
-    # local_metadata['image_test_threshold']=image_test_threshold
+    json_metadata[check_point_name]={"hello":'world'}
+    json_metadata[check_point_name]['img_expected']=img_expected
+    json_metadata[check_point_name]['img_actual']=img_actual
+    json_metadata[check_point_name]['image_test_threshold']=image_test_threshold
 
     # test
     img_diff_result = diff(img_expected, img_actual)
     verdict = img_diff_result < image_test_threshold
-    check_point_name = os.path.basename(img_actual).replace('.png','')
+    img_filename = os.path.basename(img_actual)
 
     # jot output
-    # local_metadata['check_point_name']=check_point_name
-    # local_metadata['img_diff_result']=img_diff_result
-    # local_metadata['verdict']=verdict
+    json_metadata[check_point_name]['check_point_name']=check_point_name
+    json_metadata[check_point_name]['img_diff_result']=img_diff_result
+    json_metadata[check_point_name]['verdict']=verdict
 
     DEBUG_MSG = "debug: file: {}, threshold {}, diff result {}, verdict {}".format(img_actual, image_test_threshold, img_diff_result, verdict)
     print(DEBUG_MSG)
 
     # assert False, 'hello fail'
-    assert verdict, check_point_name+' : ' +error_msg
+    assert verdict, img_filename+' : ' +error_msg
 
   # if make_asserts:
   #   assertSameImage(expected_screenshot_path, actual_screenshot_path,fail_threshold,  error_message, json_metadata)
