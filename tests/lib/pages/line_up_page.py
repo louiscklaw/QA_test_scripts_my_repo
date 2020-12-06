@@ -13,12 +13,21 @@ BACK_BUTTON_XPATH='//*[@id="tac-link"]/div/div'
 TOP_LEFT_CLOSE_BUTTON='//*[@id="close"]'
 CROSS_BUTTON_XPATH=TOP_LEFT_CLOSE_BUTTON
 
-NAME_INPUT='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[1]/input'
-NOTE_INPUT='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[3]/textarea'
+# NAME_INPUT='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[1]/input'
+NAME_INPUT='//*[@id="lineupTop"]/div[2]/div/div[1]/input'
+
+# NOTE_INPUT='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[3]/textarea'
+NOTE_INPUT='//*[@id="lineupTop"]/div[2]/div/div[3]/textarea'
+
 AMOUNT_OF_PEOPLE_XPATH='//*[@id="adult"]'
 AMOUNT_OF_CHILDREN_XPATH='//*[@id="child"]'
 
-SUBMIT_TICKET_XPATH='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[4]/div'
+
+
+# SUBMIT_TICKET_XPATH='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[4]/div'
+SUBMIT_TICKET_XPATH='//*[@id="lineupTop"]/div[2]/div/div[4]/div'
+
+
 UPDATE_TICKET_INFO_XPATH='//*[@id="app"]/div[1]/div[1]/main/div[6]/div[2]/div/div[4]/div'
 
 ADULT_SELECTOR_XPATH='//*[@id="adult"]'
@@ -54,8 +63,16 @@ class BasePage(object):
       return self.driver.find_element_by_xpath(xpath)
 
     def submitLineUpTicket(self):
-      self.tapButton(SUBMIT_TICKET_XPATH)
+      try:
+        self.tapButton(SUBMIT_TICKET_XPATH)
 
+      except Exception as e:
+        self.processCannotFindElements()
+        raise 'cannot find submit ticket xpath'
+
+
+    def processCannotFindElements(self):
+        self.takeScreenshot('/home/logic/_workspace/LynkedKK/QA_test_scripts_my_repo/fail.png')
 
     def updateLineUpTicket(self):
       self.tapButton(UPDATE_TICKET_INFO_XPATH)
@@ -70,10 +87,21 @@ class BasePage(object):
 # T&C accepted
 class Main(BasePage):
   def inputName(self, customer_name):
-    self.inputTextByXpath(NAME_INPUT, customer_name)
+    try:
+      self.inputTextByXpath(NAME_INPUT, customer_name)
+
+    except Exception as e:
+        self.processCannotFindElements()
+        raise 'cannot find input name'
+
 
   def inputNotes(self, customer_notes):
-    self.inputTextByXpath(NOTE_INPUT, customer_notes)
+    try:
+      self.inputTextByXpath(NOTE_INPUT, customer_notes)
+
+    except Exception as e:
+        self.processCannotFindElements()
+        raise 'cannot find input notes'
 
   def changeNumberOfAdult(self, number_of_adult):
     select= Select(self.driver.find_element_by_xpath(ADULT_SELECTOR_XPATH))
